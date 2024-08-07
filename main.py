@@ -45,7 +45,7 @@ def app():
         file_name = sanitize_filename(prompt)
         count = 0
         while os.path.exists(file_name + ".png"):
-            file_name = file_name + "." + count
+            file_name = file_name + "." + str(count)
         file_name = file_name + ".png"
         image.save(file_name)
 
