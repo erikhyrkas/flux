@@ -4,7 +4,6 @@ import torch
 from diffusers import FluxPipeline
 import re
 
-
 # pip install accelerate
 # pip install sentencepiece
 # pip install numpy
@@ -15,6 +14,7 @@ import re
 # pip install git+https://github.com/huggingface/diffusers.git
 
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
+
 
 def sanitize_filename(text):
     # Replace spaces and special characters with underscores
@@ -40,12 +40,14 @@ def app():
             output_type="pil",
             num_inference_steps=4,
             max_sequence_length=256,
-            generator=torch.Generator(DEVICE).manual_seed(0)
+            # generator=torch.Generator(DEVICE).manual_seed(0)
         ).images[0]
-        file_name = sanitize_filename(prompt)
+        base_file_name = sanitize_filename(prompt)
         count = 0
+        file_name = base_file_name
         while os.path.exists(file_name + ".png"):
-            file_name = file_name + "." + str(count)
+            file_name = base_file_name + "." + str(count)
+            count = count + 1
         file_name = file_name + ".png"
         image.save(file_name)
 
