@@ -4,15 +4,6 @@ import torch
 from diffusers import FluxPipeline
 import re
 
-# pip install accelerate
-# pip install sentencepiece
-# pip install numpy
-# pip install protobuf
-# use `nvcc --version` to determine version of cuda you have.
-# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-# pip install transformers
-# pip install git+https://github.com/huggingface/diffusers.git
-
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 
