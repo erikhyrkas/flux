@@ -39,7 +39,7 @@ def app():
             guidance_scale=0.0,
             output_type="pil",
             num_inference_steps=4,
-            max_sequence_length=256,
+            # max_sequence_length=256,
             # generator=torch.Generator(DEVICE).manual_seed(0)
         ).images[0]
         base_file_name = sanitize_filename(prompt)
